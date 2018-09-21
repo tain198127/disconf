@@ -3,6 +3,7 @@ package com.baidu.disconf.client.fetcher.impl;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,6 +83,8 @@ public class FetcherMgrImpl implements FetcherMgr {
 
         return confItemVo.getValue();
     }
+
+
 
     /**
      * 下载配置文件, remoteUrl是 url
