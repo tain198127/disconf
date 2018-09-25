@@ -10,7 +10,7 @@ import java.util.Map;
 public class ConfListVo {
     private boolean success = false;
     private Map<String,Object> message =null;
-    private ConfPageListVo<ClientConfListItemVo> daoPageResult = new ConfPageListVo<ClientConfListItemVo>();
+    private ConfPageListVo<ClientConfListItemVo> page = new ConfPageListVo<ClientConfListItemVo>();
 
     public boolean isSuccess() {
         return success;
@@ -21,6 +21,6 @@ public class ConfListVo {
     }
 
     public ConfPageListVo<ClientConfListItemVo> getDaoPageResult() {
-        return daoPageResult;
+        return page;
     }
 }
