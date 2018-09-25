@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import com.baidu.disconf.client.config.ConfigMgr;
 import com.baidu.disconf.client.fetcher.FetcherFactory;
-import com.baidu.disconf.core.common.json.ConfiListVo;
-import com.baidu.disconf.core.common.restful.RestfulFactory;
-import com.baidu.disconf.core.common.restful.core.RemoteUrl;
+import com.baidu.disconf.core.common.json.ConfListVo;
 import org.junit.Test;
 
 import com.baidu.disconf.client.fetcher.FetcherMgr;
@@ -84,7 +82,7 @@ public class FetcherMgrMgrTestCase extends BaseSpringTestCase {
             e.printStackTrace();
         }
         try {
-            ConfiListVo conflistVo = fetcherMgr.getListFromServer("/api/config/list?app=disconf_demo&env=rd&version=1_0_0_0");
+            ConfListVo conflistVo = fetcherMgr.getListFromServer("/api/config/list?app=disconf_demo&env=rd&version=1_0_0_0");
             System.out.println(conflistVo.toString());
         } catch (Exception e) {
             e.printStackTrace();

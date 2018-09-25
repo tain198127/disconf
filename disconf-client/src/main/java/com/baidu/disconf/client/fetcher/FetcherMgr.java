@@ -1,6 +1,6 @@
 package com.baidu.disconf.client.fetcher;
 
-import com.baidu.disconf.core.common.json.ConfiListVo;
+import com.baidu.disconf.core.common.json.ConfListVo;
 
 /**
  * 下载模块
@@ -28,7 +28,7 @@ public interface FetcherMgr {
      * @return
      * @throws Exception
      */
-    ConfiListVo getListFromServer(String url) throws Exception;
+    ConfListVo getListFromServer(String url) throws Exception;
     /**
      * 释放资源
      */

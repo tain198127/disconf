@@ -1,21 +1,19 @@
 package com.baidu.disconf.client.fetcher.impl;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import com.baidu.disconf.core.common.json.ConfPageListVo;
-import com.baidu.disconf.core.common.json.ConfiListVo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.baidu.disconf.client.fetcher.FetcherMgr;
 import com.baidu.disconf.core.common.constants.Constants;
+
+import com.baidu.disconf.core.common.json.ConfListVo;
 import com.baidu.disconf.core.common.json.ValueVo;
 import com.baidu.disconf.core.common.restful.RestfulMgr;
 import com.baidu.disconf.core.common.restful.core.RemoteUrl;
 import com.baidu.disconf.core.common.utils.OsUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 抓取器, 独立模块，不依赖外部模块, 由Factory来管理此实例
@@ -87,7 +85,6 @@ public class FetcherMgrImpl implements FetcherMgr {
     }
 
 
-
     /**
      * 下载配置文件, remoteUrl是 url
      *
@@ -112,22 +109,23 @@ public class FetcherMgrImpl implements FetcherMgr {
 
     /**
      * 根据app、环境、版本获取所有配置
+     *
      * @param url url地址
      * @return 列表对象ConfiListVo->getDaoPageResult->ClientConfListItemVo
      * @throws Exception
      */
-    public ConfiListVo getListFromServer(String url) throws Exception {
+    public ConfListVo getListFromServer(String url) throws Exception {
         // 远程地址
         RemoteUrl remoteUrl = new RemoteUrl(url, hostList);
 
-        ConfiListVo confiListVo = restfulMgr.getJsonData(ConfiListVo.class, remoteUrl, retryTime, retrySleepSeconds);
-        LOGGER.debug("remote server return: " + confiListVo.toString());
+        ConfListVo confListVo = restfulMgr.getJsonData(ConfListVo.class, remoteUrl, retryTime, retrySleepSeconds);
+        LOGGER.debug("remote server return: " + confListVo.toString());
 
-        if (!confiListVo.isSuccess()) {
+        if (!confListVo.isSuccess()) {
             throw new Exception("status is not ok.");
         }
 
-        return confiListVo;
+        return confListVo;
     }
 
     /**

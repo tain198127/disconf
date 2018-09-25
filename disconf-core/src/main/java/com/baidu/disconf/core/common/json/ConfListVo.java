@@ -5,7 +5,7 @@ package com.baidu.disconf.core.common.json;
  * email:tain198127@163.com
  * 用于展示列表
  **/
-public class ConfiListVo {
+public class ConfListVo {
     private boolean success = false;
     private String message = "";
     private ConfPageListVo<ClientConfListItemVo> daoPageResult = new ConfPageListVo<ClientConfListItemVo>();
