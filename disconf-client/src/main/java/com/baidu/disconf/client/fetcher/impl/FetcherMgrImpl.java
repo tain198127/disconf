@@ -107,16 +107,18 @@ public class FetcherMgrImpl implements FetcherMgr {
 
     }
 
+
     /**
      * 根据app、环境、版本获取所有配置
-     *
-     * @param url url地址
+     * @param app app
+     * @param env 环境
+     * @param version 版本
      * @return 列表对象ConfiListVo->getDaoPageResult->ClientConfListItemVo
      * @throws Exception
      */
-    public ConfListVo getListFromServer(String url) throws Exception {
+    public ConfListVo getListFromServer(String app,String env,String version) throws Exception {
         // 远程地址
-        RemoteUrl remoteUrl = new RemoteUrl(url, hostList);
+        RemoteUrl remoteUrl = new RemoteUrl(String.format("/api/config/list?app=%s&env=%s&version=%s",app,env,version), hostList);
 
         ConfListVo confListVo = restfulMgr.getJsonData(ConfListVo.class, remoteUrl, retryTime, retrySleepSeconds);
         LOGGER.debug("remote server return: " + confListVo.toString());

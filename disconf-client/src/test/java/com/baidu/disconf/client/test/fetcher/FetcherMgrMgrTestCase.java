@@ -82,8 +82,9 @@ public class FetcherMgrMgrTestCase extends BaseSpringTestCase {
             e.printStackTrace();
         }
         try {
-            ConfListVo conflistVo = fetcherMgr.getListFromServer("/api/config/list?app=disconf_demo&env=rd&version=1_0_0_0");
-            System.out.println(conflistVo.toString());
+            ConfListVo conflistVo = fetcherMgr.getListFromServer("disconf_demo","rd","1_0_0_0");
+            Assert.assertNotNull(conflistVo.getDaoPageResult());
+            Assert.assertTrue(conflistVo.getDaoPageResult().getResult().size()>0);
         } catch (Exception e) {
             e.printStackTrace();
             Assert.assertTrue(false);

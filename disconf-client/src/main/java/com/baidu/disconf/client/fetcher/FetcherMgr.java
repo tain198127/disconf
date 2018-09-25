@@ -23,12 +23,14 @@ public interface FetcherMgr {
     String downloadFileFromServer(String url, String fileName, String targetDirPath) throws Exception;
 
     /**
-     * 根据根据app、环境、版本获取配置list
-     * @param url
-     * @return
+     * 根据app、环境、版本获取所有配置
+     * @param app app
+     * @param env 环境
+     * @param version 版本
+     * @return 列表对象ConfiListVo->getDaoPageResult->ClientConfListItemVo
      * @throws Exception
      */
-    ConfListVo getListFromServer(String url) throws Exception;
+    ConfListVo getListFromServer(String app,String env,String version) throws Exception;
     /**
      * 释放资源
      */
