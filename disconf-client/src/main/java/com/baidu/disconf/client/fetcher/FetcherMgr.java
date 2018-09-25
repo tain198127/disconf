@@ -1,5 +1,7 @@
 package com.baidu.disconf.client.fetcher;
 
+import com.baidu.disconf.core.common.json.ConfiListVo;
+
 /**
  * 下载模块
  *
@@ -20,6 +22,13 @@ public interface FetcherMgr {
      */
     String downloadFileFromServer(String url, String fileName, String targetDirPath) throws Exception;
 
+    /**
+     * 根据根据app、环境、版本获取配置list
+     * @param url
+     * @return
+     * @throws Exception
+     */
+    ConfiListVo getListFromServer(String url) throws Exception;
     /**
      * 释放资源
      */

@@ -2,6 +2,11 @@ package com.baidu.disconf.client.test.fetcher;
 
 import java.util.ArrayList;
 
+import com.baidu.disconf.client.config.ConfigMgr;
+import com.baidu.disconf.client.fetcher.FetcherFactory;
+import com.baidu.disconf.core.common.json.ConfiListVo;
+import com.baidu.disconf.core.common.restful.RestfulFactory;
+import com.baidu.disconf.core.common.restful.core.RemoteUrl;
 import org.junit.Test;
 
 import com.baidu.disconf.client.fetcher.FetcherMgr;
@@ -63,6 +68,24 @@ public class FetcherMgrMgrTestCase extends BaseSpringTestCase {
                     "./disconf");
             Assert.assertEquals(RestfulMgrMock.defaultFileName, valueString);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.assertTrue(false);
+        }
+    }
+    @Test
+    public void getConfigListFromServer() {
+
+        FetcherMgr fetcherMgr = null;
+        try {
+            ConfigMgr.init();
+            fetcherMgr = FetcherFactory.getFetcherMgr();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            ConfiListVo conflistVo = fetcherMgr.getListFromServer("/api/config/list?app=disconf_demo&env=rd&version=1_0_0_0");
+            System.out.println(conflistVo.toString());
         } catch (Exception e) {
             e.printStackTrace();
             Assert.assertTrue(false);

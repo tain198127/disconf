@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.baidu.disconf.core.common.json.ConfPageListVo;
+import com.baidu.disconf.core.common.json.ConfiListVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -106,6 +108,26 @@ public class FetcherMgrImpl implements FetcherMgr {
                         retryTime,
                         retrySleepSeconds);
 
+    }
+
+    /**
+     * 根据app、环境、版本获取所有配置
+     * @param url url地址
+     * @return 列表对象ConfiListVo->getDaoPageResult->ClientConfListItemVo
+     * @throws Exception
+     */
+    public ConfiListVo getListFromServer(String url) throws Exception {
+        // 远程地址
+        RemoteUrl remoteUrl = new RemoteUrl(url, hostList);
+
+        ConfiListVo confiListVo = restfulMgr.getJsonData(ConfiListVo.class, remoteUrl, retryTime, retrySleepSeconds);
+        LOGGER.debug("remote server return: " + confiListVo.toString());
+
+        if (!confiListVo.isSuccess()) {
+            throw new Exception("status is not ok.");
+        }
+
+        return confiListVo;
     }
 
     /**
