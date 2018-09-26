@@ -11,7 +11,7 @@
     <modules>
         <module>disconf-client</module>
         <module>disconf-core</module>
-        <module>disconf-web</module>
+        <!--<module>disconf-web</module>-->
     </modules>
 
     <inceptionYear>2015</inceptionYear>
@@ -26,9 +26,9 @@
 
     <properties>
         <!-- 模块版本号 -->
-        <disconf-core.version>2.6.36</disconf-core.version>
-        <disconf-client.version>2.6.36</disconf-client.version>
-        <disconf-client-spring.version>2.6.36</disconf-client-spring.version>
+        <disconf-core.version>2.6.37</disconf-core.version>
+        <disconf-client.version>2.6.37</disconf-client.version>
+        <disconf-client-spring.version>2.6.37</disconf-client-spring.version>
 
         <!-- Spring項目配置 -->
         <encoding>UTF-8</encoding>
