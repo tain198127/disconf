@@ -153,6 +153,17 @@ public class DisconfFileCoreProcessorImpl implements DisconfCoreProcessor {
     }
 
     /**
+     * 更新某个配置文件，不回调
+     * @param key
+     */
+    public void updateOnConfig(String key) throws Exception {
+        // 更新 配置
+        updateOneConf(key);
+
+        // 回调
+        DisconfCoreProcessUtils.callOneConf(disconfStoreProcessor, key);
+    }
+    /**
      * 更新消息: 某个配置文件 + 回调
      */
     @Override

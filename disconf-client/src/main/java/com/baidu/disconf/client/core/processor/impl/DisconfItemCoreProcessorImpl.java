@@ -155,6 +155,21 @@ public class DisconfItemCoreProcessorImpl implements DisconfCoreProcessor {
     }
 
     /**
+     * 更新，并且不回调
+     *
+     * @param key
+     * @throws Exception
+     */
+    @Override
+    public void updateOnConfig(String key) throws Exception {
+        // 更新 配置
+        updateOneConf(key);
+
+        // 回调
+        DisconfCoreProcessUtils.callOneConf(disconfStoreProcessor, key);
+    }
+
+    /**
      * @param key
      */
     private void callUpdatePipeline(String key) {

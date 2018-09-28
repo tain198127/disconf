@@ -107,4 +107,22 @@ public class DisconfCoreMgrImpl implements DisconfCoreMgr {
             watchMgr.release();
         }
     }
+
+    /**
+     * 手动更新key
+     * @param keys
+     * @throws Exception
+     */
+    @Override
+    public void update(final List<String> keys) throws Exception {
+        for (DisconfCoreProcessor processor:disconfCoreProcessorList
+             ) {
+            for (String key:keys
+                 ) {
+                processor.updateOnConfig(key);
+            }
+        }
+    }
+
+
 }

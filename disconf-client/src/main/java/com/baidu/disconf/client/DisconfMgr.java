@@ -1,5 +1,6 @@
 package com.baidu.disconf.client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -49,6 +50,18 @@ public class DisconfMgr implements ApplicationContextAware {
     }
 
     private DisconfMgr() {
+
+    }
+   //手动更新key,并且不发送通知
+    public void update(String key) throws Exception {
+
+
+        if(disconfCoreMgr == null ){
+            return ;
+        }
+        List<String> keys = new ArrayList<String>();
+        keys.add(key);
+        disconfCoreMgr.update(keys);
 
     }
 
