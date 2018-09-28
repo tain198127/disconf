@@ -14,10 +14,28 @@ public class ClientConfListItemVo {
     private Long envId;
     private String envName;
 
-    private String type;
-    private Integer typeId;
+    public Integer getStatus() {
+        return status;
+    }
 
-    private String key;
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+
+    private Integer status;
+
+    public Integer getType() {
+        return type;
+    }
+
+    private Integer type;
+
+    private String name;
 
     private String value;
 
@@ -63,13 +81,6 @@ public class ClientConfListItemVo {
         this.envId = envId;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getEnvName() {
         return envName;
@@ -87,12 +98,12 @@ public class ClientConfListItemVo {
         this.errorNum = errorNum;
     }
 
-    public String getKey() {
-        return key;
+    public String getName() {
+        return name;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setName(String key) {
+        this.name = key;
     }
 
     public String getValue() {
@@ -127,14 +138,6 @@ public class ClientConfListItemVo {
         this.configId = configId;
     }
 
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
     public int getMachineSize() {
         return machineSize;
     }
@@ -147,8 +150,8 @@ public class ClientConfListItemVo {
     @Override
     public String toString() {
         return "ConfListVo [configId=" + configId + ", appName=" + appName + ", appId=" + appId + ", version=" +
-                version + ", envId=" + envId + ", envName=" + envName + ", type=" + type + ", typeId=" + typeId +
-                ", key=" + key + ", value=" + value + ", createTime=" + createTime + ", modifyTime=" + modifyTime +
+                version + ", envId=" + envId + ", envName=" + envName + ", type=" + type  +
+                ", name=" + name + ", value=" + value + ", createTime=" + createTime + ", modifyTime=" + modifyTime +
                 "]";
     }
 
