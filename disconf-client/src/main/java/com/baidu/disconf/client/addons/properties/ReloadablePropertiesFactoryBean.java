@@ -224,7 +224,7 @@ public class ReloadablePropertiesFactoryBean extends PropertiesFactoryBean imple
      *
      * @throws IOException
      */
-    private void doReload() throws IOException {
+    public void doReload() throws IOException {
         reloadableProperties.setProperties(mergeProperties());
     }
 
