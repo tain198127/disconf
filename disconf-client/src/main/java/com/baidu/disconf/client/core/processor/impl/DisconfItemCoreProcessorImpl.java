@@ -36,6 +36,11 @@ public class DisconfItemCoreProcessorImpl implements DisconfCoreProcessor {
     // Registry
     private Registry registry = null;
 
+
+    public DisconfStoreProcessor getDisconfStoreProcessor() {
+        return disconfStoreProcessor;
+    }
+
     // 仓库算子
     private DisconfStoreProcessor disconfStoreProcessor = DisconfStoreProcessorFactory.getDisconfStoreItemProcessor();
 

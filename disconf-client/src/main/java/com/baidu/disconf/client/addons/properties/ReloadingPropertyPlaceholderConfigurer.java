@@ -50,6 +50,11 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
     private String beanName;
 
     private BeanFactory beanFactory;
+
+    public Properties[] getPropertiesArray() {
+        return propertiesArray;
+    }
+
     private Properties[] propertiesArray;
 
     /**

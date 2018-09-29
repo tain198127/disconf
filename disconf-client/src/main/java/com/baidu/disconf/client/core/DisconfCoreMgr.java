@@ -1,5 +1,10 @@
 package com.baidu.disconf.client.core;
 
+import com.baidu.disconf.client.core.processor.DisconfCoreProcessor;
+import com.baidu.disconf.client.fetcher.FetcherMgr;
+import com.baidu.disconf.client.support.registry.Registry;
+import com.baidu.disconf.client.watch.WatchMgr;
+
 import java.util.List;
 
 /**
@@ -35,5 +40,25 @@ public interface DisconfCoreMgr {
      * 释放一些资源
      */
     void release();
+
     void update(List<String> keys) throws Exception;
+
+    WatchMgr getWatchMgr();
+
+    FetcherMgr getFetcherMgr();
+
+    Registry getRegistry();
+
+    /**
+     * 暴露出来文件的processor
+     * @return
+     */
+    DisconfCoreProcessor getDisconfCoreProcessorFile();
+
+    /**
+     * 暴露出来ITEM的processor
+     * @return
+     */
+    DisconfCoreProcessor getDisconfCoreProcessorItem();
+
 }

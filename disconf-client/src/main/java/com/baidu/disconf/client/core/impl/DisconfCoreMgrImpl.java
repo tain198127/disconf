@@ -25,6 +25,30 @@ public class DisconfCoreMgrImpl implements DisconfCoreMgr {
 
     private List<DisconfCoreProcessor> disconfCoreProcessorList = new ArrayList<DisconfCoreProcessor>();
 
+
+    private DisconfCoreProcessor disconfCoreProcessorFile_local = null;
+    private DisconfCoreProcessor disconfCoreProcessorItem_local = null;
+
+    public DisconfCoreProcessor getDisconfCoreProcessorFile() {
+        return disconfCoreProcessorFile_local;
+    }
+
+    public DisconfCoreProcessor getDisconfCoreProcessorItem() {
+        return disconfCoreProcessorItem_local;
+    }
+
+    public WatchMgr getWatchMgr() {
+        return watchMgr;
+    }
+
+    public FetcherMgr getFetcherMgr() {
+        return fetcherMgr;
+    }
+
+    public Registry getRegistry() {
+        return registry;
+    }
+
     // 监控器
     private WatchMgr watchMgr = null;
 
@@ -45,10 +69,17 @@ public class DisconfCoreMgrImpl implements DisconfCoreMgr {
         //
         DisconfCoreProcessor disconfCoreProcessorFile =
                 DisconfCoreProcessorFactory.getDisconfCoreProcessorFile(watchMgr, fetcherMgr, registry);
+
+        disconfCoreProcessorFile_local = disconfCoreProcessorFile;
+
         disconfCoreProcessorList.add(disconfCoreProcessorFile);
+
 
         DisconfCoreProcessor disconfCoreProcessorItem =
                 DisconfCoreProcessorFactory.getDisconfCoreProcessorItem(watchMgr, fetcherMgr, registry);
+
+        disconfCoreProcessorItem_local=disconfCoreProcessorItem;
+
         disconfCoreProcessorList.add(disconfCoreProcessorItem);
     }
 

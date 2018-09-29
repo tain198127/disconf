@@ -37,6 +37,10 @@ public class DisconfMgr implements ApplicationContextAware {
     // application context
     private ApplicationContext applicationContext;
 
+    public DisconfCoreMgr getDisconfCoreMgr() {
+        return disconfCoreMgr;
+    }
+
     // 核心处理器
     private DisconfCoreMgr disconfCoreMgr = null;
 
