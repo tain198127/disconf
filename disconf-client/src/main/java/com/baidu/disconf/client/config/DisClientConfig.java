@@ -32,6 +32,10 @@ public final class DisClientConfig {
     // disconf.properties 的路径 -D 传入
     private static final String DISCONF_CONF_FILE_PATH_ARG = "disconf.conf";
 
+    private static final  String DISCONF_CONF_SCAN_PACKAGE="disconf.scanpackages";
+    @DisInnerConfigAnnotation(name = DisClientConfig.DISCONF_CONF_SCAN_PACKAGE)
+    public String ScanPackages;
+
     private boolean isLoaded = false;
 
     private DisClientConfig() {
