@@ -339,7 +339,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      * @param dynamic
      * @param placeholder
      */
-    private void addDependency(DynamicProperty dynamic, String placeholder) {
+    public void addDependency(DynamicProperty dynamic, String placeholder) {
         List<DynamicProperty> l = placeholderToDynamics.get(placeholder);
         if (l == null) {
             l = new ArrayList<DynamicProperty>();
@@ -356,7 +356,7 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
      *
      * @param dynamic
      */
-    private void removeDynamic(DynamicProperty dynamic) {
+    public void removeDynamic(DynamicProperty dynamic) {
         List<String> placeholders = dynamic.placeholders;
         for (String placeholder : placeholders) {
             List<DynamicProperty> l = placeholderToDynamics.get(placeholder);
