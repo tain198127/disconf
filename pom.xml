@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baidu.disconf</groupId>
@@ -58,9 +58,9 @@
             <!-- common dependencies -->
 
             <!--<dependency>-->
-                <!--<groupId>org.aopalliance</groupId>-->
-                <!--<artifactId>com.springsource.org.aopalliance</artifactId>-->
-                <!--<version>2.5.6</version>-->
+            <!--<groupId>org.aopalliance</groupId>-->
+            <!--<artifactId>com.springsource.org.aopalliance</artifactId>-->
+            <!--<version>2.5.6</version>-->
             <!--</dependency>-->
 
             <dependency>
@@ -687,12 +687,12 @@
                     <skip>true</skip>
                 </configuration>
                 <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>attach-javadocs</id>-->
-                        <!--<goals>-->
-                            <!--<goal>jar</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
+                <!--<execution>-->
+                <!--<id>attach-javadocs</id>-->
+                <!--<goals>-->
+                <!--<goal>jar</goal>-->
+                <!--</goals>-->
+                <!--</execution>-->
                 <!--</executions>-->
             </plugin>
 
@@ -701,13 +701,14 @@
 
     <developers>
         <developer>
-            <name>Liao Qiqi</name>
-            <id>knightliao</id>
-            <email>knightliao@gmail.com</email>
+            <id>DaneBrown</id>
+            <name>DaneBrown</name>
+            <email>baodan@bcpeople</email>
+            <organization>goldeneggs</organization>
+            <organizationUrl>http://192.168.100.119/AA/denpendency</organizationUrl>
             <roles>
-                <role>Developer</role>
+                <role>Project lead</role>
             </roles>
-            <timezone>+8</timezone>
         </developer>
     </developers>
 
@@ -717,28 +718,31 @@
     </organization>
 
     <scm>
-        <url>scm:git:git@github.com:knightliao/disconf</url>
-        <connection>scm:git:git@github.com:knightliao/disconf</connection>
-        <tag>disconf-base</tag>
+        <connection>scm:git:git@192.168.100.119:AA/denpendency.git</connection>
+        <developerConnection>scm:git:git@192.168.100.119:AA/denpendency.git</developerConnection>
+
+        <url>http://192.168.100.119/AA/denpendency</url>
     </scm>
 
     <url>https://github.com/knightliao/disconf</url>
     <name>disconf</name>
     <description>Distributed Configuration Management Platform.</description>
-
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>releases</name>
+            <url>http://192.168.100.215:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>snapshots</name>
+            <url>http://192.168.100.215:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
     <profiles>
         <profile>
             <id>release</id>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>nexus-release</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-                </snapshotRepository>
-                <repository>
-                    <id>nexus-release</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
+
             <build>
                 <plugins>
                     <!-- Source -->
@@ -764,12 +768,12 @@
                             <skip>true</skip>
                         </configuration>
                         <!--<executions>-->
-                            <!--<execution>-->
-                                <!--<phase>package</phase>-->
-                                <!--<goals>-->
-                                    <!--<goal>jar</goal>-->
-                                <!--</goals>-->
-                            <!--</execution>-->
+                        <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                        <!--<goal>jar</goal>-->
+                        <!--</goals>-->
+                        <!--</execution>-->
                         <!--</executions>-->
                     </plugin>
                     <plugin>
