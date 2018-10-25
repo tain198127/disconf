@@ -3,30 +3,38 @@ package com.baidu.disconf.web.service.config.vo;
 import java.util.List;
 
 import com.baidu.disconf.web.service.zookeeper.dto.ZkDisconfData.ZkDisconfDataItem;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author liaoqiqi
  * @version 2014-6-23
  */
+@ApiModel(value = "配置信息列表视图",description = "用于后台管理列表视图")
 public class ConfListVo {
-
+@ApiModelProperty("配置ID")
     private Long configId;
-
+    @ApiModelProperty("app名称")
     private String appName;
+    @ApiModelProperty("app的ID")
     private Long appId;
+    @ApiModelProperty("版本")
     private String version;
+    @ApiModelProperty("环境ID")
     private Long envId;
+    @ApiModelProperty("环境名称")
     private String envName;
-
+    @ApiModelProperty(value="类型，1为配置项，0为文件",notes = "请不要使用配置项，BCONF客户端不会读取配置项内容")
     private String type;
+    @ApiModelProperty("类型ID")
     private Integer typeId;
-
+    @ApiModelProperty("唯一标示")
     private String key;
-
+    @ApiModelProperty("值")
     private String value;
-
+    @ApiModelProperty("创建时间")
     private String createTime;
-
+    @ApiModelProperty("修改时间")
     private String modifyTime;
 
     //

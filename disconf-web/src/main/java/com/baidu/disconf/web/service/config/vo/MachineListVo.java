@@ -3,14 +3,20 @@ package com.baidu.disconf.web.service.config.vo;
 import java.util.List;
 
 import com.baidu.disconf.web.service.zookeeper.dto.ZkDisconfData.ZkDisconfDataItem;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author knightliao
  */
+@ApiModel("配置信息")
 public class MachineListVo {
 
+    @ApiModelProperty("ZK配置信息")
     private List<ZkDisconfDataItem> datalist;
+    @ApiModelProperty("错误数")
     private int errorNum = 0;
+    @ApiModelProperty("ZK节点数")
     private int machineSize;
 
     public int getMachineSize() {

@@ -2,6 +2,8 @@ package com.baidu.disconf.web.web.env.controller;
 
 import java.util.List;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import com.baidu.dsp.common.vo.JsonObjectBase;
  * @author liaoqiqi
  * @version 2014-6-16
  */
+@Api("环境接口")
 @Controller
 @RequestMapping(WebConstants.API_PREFIX + "/env")
 public class EnvController extends BaseController {
@@ -34,6 +37,7 @@ public class EnvController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value = "获取列表-需要登陆",notes = "需要先登陆")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public JsonObjectBase list() {

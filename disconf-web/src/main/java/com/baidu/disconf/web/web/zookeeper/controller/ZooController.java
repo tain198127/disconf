@@ -2,6 +2,8 @@ package com.baidu.disconf.web.web.zookeeper.controller;
 
 import javax.validation.Valid;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,7 @@ import com.baidu.dsp.common.vo.JsonObjectBase;
  * @author liaoqiqi
  * @version 2014-1-20
  */
+@Api("ZK信息")
 @Controller
 @RequestMapping(WebConstants.API_PREFIX + "/zoo")
 public class ZooController extends BaseController {
@@ -48,6 +51,7 @@ public class ZooController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("获取ZK地址-无需登录")
     @NoAuth
     @RequestMapping(value = "/hosts", method = RequestMethod.GET)
     @ResponseBody
@@ -65,6 +69,7 @@ public class ZooController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("获取ZK的前缀-无需登录")
     @NoAuth
     @RequestMapping(value = "/prefix", method = RequestMethod.GET)
     @ResponseBody
@@ -84,6 +89,7 @@ public class ZooController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("获取ZK部署状况-无需登录")
     @RequestMapping(value = "/zkdeploy", method = RequestMethod.GET)
     @ResponseBody
     public JsonObjectBase getZkDeployInfo(@Valid ZkDeployForm zkDeployForm) {

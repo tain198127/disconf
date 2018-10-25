@@ -2,6 +2,8 @@ package com.baidu.disconf.web.service.config.form;
 
 import javax.validation.constraints.NotNull;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -10,15 +12,18 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author liaoqiqi
  * @version 2014-7-3
  */
+@ApiModel(value="新建配置项表单",description = "新建配置项表单JSON")
 public class ConfNewItemForm extends ConfNewForm {
 
     @NotNull(message = "value.empty")
     @NotEmpty(message = "value.empty")
+    @ApiModelProperty(value="值",required = true)
     private String value;
     public static final String VALUE = "value";
 
     @NotNull(message = "key.empty")
     @NotEmpty(message = "key.empty")
+    @ApiModelProperty(value="key",required = true)
     private String key;
     public static final String KEY = "key";
 

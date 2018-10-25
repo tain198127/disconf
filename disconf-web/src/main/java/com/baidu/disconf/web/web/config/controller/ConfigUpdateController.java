@@ -2,6 +2,8 @@ package com.baidu.disconf.web.web.config.controller;
 
 import javax.validation.constraints.NotNull;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,7 @@ import com.baidu.dsp.common.vo.JsonObjectBase;
  * @author liaoqiqi
  * @version 2014-6-24
  */
+@Api(value = "专用于配置更新、删除")
 @Controller
 @RequestMapping(WebConstants.API_PREFIX + "/web/config")
 public class ConfigUpdateController extends BaseController {
@@ -50,6 +53,7 @@ public class ConfigUpdateController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value = "配置项的更新-需要登陆",notes = "配置项的，不是配置文件，需要登陆。在BCONF中，不会获取配置项。")
     @RequestMapping(value = "/item/{configId}", method = RequestMethod.PUT)
     @ResponseBody
     public JsonObjectBase updateItem(@PathVariable long configId, String value) {
@@ -81,6 +85,7 @@ public class ConfigUpdateController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value = "配置文件的更新[文件]-需要登陆",notes = "配置文件的，不是配置项的，需要登陆。以上传文本的形式")
     @ResponseBody
     @RequestMapping(value = "/file/{configId}", method = RequestMethod.POST)
     public JsonObjectBase updateFile(@PathVariable long configId, @RequestParam("myfilerar") MultipartFile file) {
@@ -129,6 +134,7 @@ public class ConfigUpdateController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value = "配置项的更新[文本]-需要登陆",notes = "配置项的，不是配置文件，需要登陆，以文本的形式修改")
     @ResponseBody
     @RequestMapping(value = "/filetext/{configId}", method = RequestMethod.PUT)
     public JsonObjectBase updateFileWithText(@PathVariable long configId, @NotNull String fileContent) {
@@ -163,6 +169,7 @@ public class ConfigUpdateController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value = "根据配置ID删除配置-需要登陆",notes = "不区分配置项还是配置文件")
     @RequestMapping(value = "/{configId}", method = RequestMethod.DELETE)
     @ResponseBody
     public JsonObjectBase delete(@PathVariable long configId) {

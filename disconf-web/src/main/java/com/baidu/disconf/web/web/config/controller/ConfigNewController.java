@@ -3,6 +3,8 @@ package com.baidu.disconf.web.web.config.controller;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,7 @@ import com.baidu.dsp.common.vo.JsonObjectBase;
  * @author liaoqiqi
  * @version 2014-6-24
  */
+@Api(tags = "新建配置")
 @Controller
 @RequestMapping(WebConstants.API_PREFIX + "/web/config")
 public class ConfigNewController extends BaseController {
@@ -52,6 +55,7 @@ public class ConfigNewController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("新建配置项-需要登陆")
     @RequestMapping(value = "/item", method = RequestMethod.POST)
     @ResponseBody
     public JsonObjectBase newItem(@Valid ConfNewItemForm confNewForm) {
@@ -73,6 +77,7 @@ public class ConfigNewController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("上传新建配置文件-需要登陆")
     @ResponseBody
     @RequestMapping(value = "/file", method = RequestMethod.POST)
     public JsonObjectBase updateFile(@Valid ConfNewForm confNewForm, @RequestParam("myfilerar") MultipartFile file) {
@@ -124,6 +129,7 @@ public class ConfigNewController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("文本新建配置文件-需要登陆")
     @ResponseBody
     @RequestMapping(value = "/filetext", method = RequestMethod.POST)
     public JsonObjectBase updateFileWithText(@Valid ConfNewForm confNewForm, @NotNull String fileContent,

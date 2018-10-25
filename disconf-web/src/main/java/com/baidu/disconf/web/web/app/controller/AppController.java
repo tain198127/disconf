@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ import com.baidu.dsp.common.vo.JsonObjectBase;
  * @author liaoqiqi
  * @version 2014-6-16
  */
+@Api(tags = "基础APP")
 @Controller
 @RequestMapping(WebConstants.API_PREFIX + "/app")
 public class AppController extends BaseController {
@@ -41,6 +44,7 @@ public class AppController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public JsonObjectBase list() {
@@ -55,6 +59,7 @@ public class AppController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("创建表单")
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
     public JsonObjectBase create(@Valid AppNewForm appNewForm) {

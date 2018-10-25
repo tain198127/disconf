@@ -2,6 +2,8 @@ package com.baidu.disconf.web.service.config.form;
 
 import javax.validation.constraints.NotNull;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -10,18 +12,22 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author liaoqiqi
  * @version 2014-7-3
  */
+@ApiModel(value="新建配置项表单-BASE",description = "新建配置项表单-BASE-JSON")
 public class ConfNewForm {
 
     @NotNull(message = "app.empty")
+    @ApiModelProperty("对应APP的ID")
     private Long appId;
     public static final String APPID = "appId";
 
     @NotNull(message = "version.empty")
     @NotEmpty(message = "version.empty")
+    @ApiModelProperty("版本")
     private String version;
     public static final String VERSION = "version";
 
     @NotNull(message = "env.empty")
+    @ApiModelProperty("环境的ID")
     private Long envId;
     public static final String ENVID = "envId";
 

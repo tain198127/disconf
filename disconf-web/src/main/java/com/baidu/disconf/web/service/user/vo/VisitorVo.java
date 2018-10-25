@@ -1,9 +1,16 @@
 package com.baidu.disconf.web.service.user.vo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="访问者信息",description = "访问者信息JSON")
 public class VisitorVo {
 
+    @ApiModelProperty("访问者ID")
     private Long id;
+    @ApiModelProperty("访问者NAME")
     private String name;
+    @ApiModelProperty("访问者角色")
     private String role;
 
     public Long getId() {

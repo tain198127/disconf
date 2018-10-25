@@ -3,6 +3,8 @@ package com.baidu.disconf.web.web.auth;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,7 @@ import com.baidu.ub.common.commons.ThreadContext;
  * @author liaoqiqi
  * @version 2014-1-20
  */
+@Api(tags="用户接口")
 @Controller
 @RequestMapping(WebConstants.API_PREFIX + "/account")
 public class UserController extends BaseController {
@@ -57,6 +60,7 @@ public class UserController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("获取对象-无需认证")
     @NoAuth
     @RequestMapping(value = "/session", method = RequestMethod.GET)
     @ResponseBody
@@ -82,6 +86,7 @@ public class UserController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("登陆-无需认证")
     @NoAuth
     @RequestMapping(value = "/signin", method = RequestMethod.POST)
     @ResponseBody
@@ -116,6 +121,7 @@ public class UserController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("登出-无需认证")
     @NoAuth
     @RequestMapping(value = "/signout", method = RequestMethod.GET)
     @ResponseBody
@@ -133,6 +139,7 @@ public class UserController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("修改密码-需要登陆")
     @RequestMapping(value = "/password", method = RequestMethod.PUT)
     @ResponseBody
     public JsonObjectBase password(@Valid PasswordModifyForm passwordModifyForm, HttpServletRequest request) {

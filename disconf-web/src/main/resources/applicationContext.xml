@@ -67,6 +67,9 @@
         <property name="domain" value="${domain}"/>
     </bean>
 
+    <!--swagger2-->
+    <!--<bean id="SwaggerConfig" class="com.baidu.disconf.web.config.SwaggerConfig"/>-->
+    <!--<bean class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration" id="swagger2Config"/>-->
     <!-- import -->
     <import resource="classpath*:myconfig/applicationContext-cache.xml"/>
     <import resource="classpath*:myconfig/applicationContext-springcache.xml"/>

@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,7 @@ import com.baidu.dsp.common.vo.JsonObjectBase;
  * @author liaoqiqi
  * @version 2014-6-16
  */
+@ApiModel(value="获取配置",description = "获取配置的JSON")
 @Controller
 @RequestMapping(WebConstants.API_PREFIX + "/config")
 public class ConfigFetcherController extends BaseController {
@@ -57,6 +60,7 @@ public class ConfigFetcherController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("根据app, evn, version 获取配置项列表-无需登录")
     @NoAuth
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
@@ -78,6 +82,7 @@ public class ConfigFetcherController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("根据app, evn, version 获取配置项-无需登录")
     @NoAuth
     @RequestMapping(value = "/item", method = RequestMethod.GET)
     @ResponseBody
@@ -105,6 +110,7 @@ public class ConfigFetcherController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("根据app, evn, version 获取配置文件-无需登录")
     @NoAuth
     @RequestMapping(value = "/file", method = RequestMethod.GET)
     @ResponseBody

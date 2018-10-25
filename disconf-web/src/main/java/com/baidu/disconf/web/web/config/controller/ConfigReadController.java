@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +43,7 @@ import com.baidu.ub.common.db.DaoPageResult;
  * @author liaoqiqi
  * @version 2014-6-22
  */
+@Api(tags = "读取配置")
 @Controller
 @RequestMapping(WebConstants.API_PREFIX + "/web/config")
 public class ConfigReadController extends BaseController {
@@ -58,6 +61,7 @@ public class ConfigReadController extends BaseController {
      *
      * @return
      */
+    @ApiOperation("获取版本列表-需要登陆")
     @RequestMapping(value = "/versionlist", method = RequestMethod.GET)
     @ResponseBody
     public JsonObjectBase getVersionList(@Valid VersionListForm versionListForm) {
@@ -77,6 +81,7 @@ public class ConfigReadController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value="获取列表[有分页]-需要登陆",notes = "有分页，包含所有信息")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public JsonObjectBase getConfigList(@Valid ConfListForm confListForm) {
@@ -99,6 +104,7 @@ public class ConfigReadController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value="获取简单列表[有分页]-需要登陆", notes = "有分页，无ZK信息")
     @RequestMapping(value = "/simple/list", method = RequestMethod.GET)
     @ResponseBody
     public JsonObjectBase getSimpleConfigList(@Valid ConfListForm confListForm) {
@@ -121,6 +127,7 @@ public class ConfigReadController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value="根据某个configID获取配置-需要登陆")
     @RequestMapping(value = "/{configId}", method = RequestMethod.GET)
     @ResponseBody
     public JsonObjectBase getConfig(@PathVariable long configId) {
@@ -140,6 +147,7 @@ public class ConfigReadController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value="根据配置ID获取ZK信息")
     @RequestMapping(value = "/zk/{configId}", method = RequestMethod.GET)
     @ResponseBody
     public JsonObjectBase getZkInfo(@PathVariable long configId) {
@@ -159,6 +167,7 @@ public class ConfigReadController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value="根据配置ID下载配置信息")
     @RequestMapping(value = "/download/{configId}", method = RequestMethod.GET)
     public HttpEntity<byte[]> downloadDspBill(@PathVariable long configId) {
 
@@ -193,6 +202,7 @@ public class ConfigReadController extends BaseController {
      *
      * @return
      */
+    @ApiOperation(value="批量下载配置文件")
     @RequestMapping(value = "/downloadfilebatch", method = RequestMethod.GET)
     public HttpEntity<byte[]> download2(@Valid ConfListForm confListForm) {
 
