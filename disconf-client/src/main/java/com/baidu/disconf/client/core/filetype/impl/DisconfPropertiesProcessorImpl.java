@@ -43,7 +43,11 @@ public class DisconfPropertiesProcessorImpl implements DisconfFileTypeProcessor 
             if(excloud_properties.isEmpty()){
                 map.put(key, value);
             }
-            else if(!excloud_properties.stream().anyMatch(item->(key.contains(item)))){
+            else if(!excloud_properties.stream().anyMatch(item->(
+                    key.equals(item)||
+                    key.contains(item.endsWith(".")?item:item+".")
+            ))
+            ){
                 map.put(key, value);
             }
 

@@ -2,6 +2,7 @@ package com.baidu.disconf.client.addons.properties;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import com.baidu.disconf.client.config.DisClientConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanWrapper;
@@ -498,6 +500,33 @@ public class ReloadingPropertyPlaceholderConfigurer extends DefaultPropertyPlace
     }
 
     public void setPropertiesArray(Properties[] propertiesArray) {
+        // TODO: 2018/10/29 在这里进行properties的key的检查，发现需要排除的，马上排除掉
+        String keys = DisClientConfig.getInstance().EXCLOUD_PROPERTIES_KEYS;
+        List<String> excloud_properties=new ArrayList<>();
+        if(keys!= null && !keys.isEmpty()){
+            String[] split =  keys.split(",");
+            Arrays.stream(split).forEach(item->excloud_properties.add(item));
+        }
+        if(!excloud_properties.isEmpty()){
+            for (Properties p: propertiesArray
+            ) {
+            List<String> extKeys = new ArrayList<>();
+            p.keySet().stream().forEach(item->{
+                String pK = item.toString();
+                //发现需要排除的key
+                if(excloud_properties.stream().anyMatch(finder-> pK.equals(finder) || pK.contains(finder.endsWith(".")?finder:finder+"."))){
+                    extKeys.add(pK);
+                }
+            });
+            //删除需要排除的key
+            extKeys.forEach(item->{
+                p.remove(item);
+            });
+
+
+            }
+        }
+
         this.propertiesArray = propertiesArray;
         super.setPropertiesArray(propertiesArray);
     }
