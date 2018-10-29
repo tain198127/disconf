@@ -153,6 +153,13 @@ public final class DisClientConfig {
      */
     @DisInnerConfigAnnotation(name = "disconf.debug", defaultValue = "false")
     public boolean DEBUG = false;
+    /**
+     * 忽略哪些配置项，使用XX.XX作为前缀。多个配置项前缀用逗号,分割。例如A.AB.ABC,X.XY.XYZ
+     * @author DaneBrown
+     */
+    @DisInnerConfigAnnotation(name = "disconf.excloud_properties_key", defaultValue = "")
+    public String EXCLOUD_PROPERTIES_KEYS="";
+    private Set<String> excloudPropertiesKeys = new HashSet<String>();
 
     /**
      * 忽略哪些分布式配置
@@ -208,6 +215,11 @@ public final class DisClientConfig {
         this.hostList = hostList;
     }
 
+    /**
+     * 文件或者item级的排除，和EXCLOUD_PROPERTIES_KEYS是有区别的。注意区分
+     *
+     * @return
+     */
     public Set<String> getIgnoreDisconfKeySet() {
         return ignoreDisconfKeySet;
     }
