@@ -144,7 +144,7 @@ public class DisconfCenterFile extends DisconfCenterBaseModel {
 
         // 不放到classpath, 则文件路径根据 userDefineDownloadDir 来设置
         if (!DisClientConfig.getInstance().enableLocalDownloadDirInClassPath) {
-            return OsUtil.pathJoin(DisClientConfig.getInstance().userDefineDownloadDir, fileName);
+            return OsUtil.pathJoin(OsUtil.getRealConfigDir(DisClientConfig.getInstance().userDefineDownloadDir) , fileName);
         }
 
         if (targetDirPath != null) {

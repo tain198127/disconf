@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
+import java.nio.file.Path;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +25,29 @@ public final class OsUtil {
 
     }
 
+    public static String getClzDomainPath(){
+        String realPath = "";
+
+        realPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        if(realPath==null || realPath.isEmpty()){
+            realPath = OsUtil.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
+            try {
+                realPath = java.net.URLDecoder.decode(realPath, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+        File app = new File(realPath);
+        if(app.isDirectory()){
+            realPath =  app.getPath();
+        }
+        else{
+            realPath = app.getParentFile().getPath();
+        }
+        return realPath;
+    }
+
     /**
      * 建多层目录
      *
@@ -34,12 +59,34 @@ public final class OsUtil {
      * @Description: make directory
      */
     public static boolean makeDirs(final String filePath) {
-        File f = new File(filePath);
+
+
+
+        String configPath = getRealConfigDir(filePath);
+
+
+
+        File f = new File(configPath);
         if (!f.exists()) {
             return f.mkdirs();
         }
 
         return true;
+    }
+    public static String getRealConfigDir(final String filePath){
+
+        String realFilePath = "";
+        if(filePath.startsWith("."+File.separator))
+        {
+            realFilePath =  filePath.substring(2,filePath.length());
+        }
+        else if(filePath.startsWith(File.separator)){
+            realFilePath = filePath.substring(1,filePath.length());
+        }
+        else {
+            realFilePath = filePath;
+        }
+        return getClzDomainPath()+File.separator+realFilePath;
     }
 
     /**
