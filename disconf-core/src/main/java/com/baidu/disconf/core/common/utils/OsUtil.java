@@ -81,7 +81,7 @@ public final class OsUtil {
             realFilePath =  filePath.substring(2,filePath.length());
         }
         else if(filePath.startsWith(File.separator)){
-            realFilePath = filePath.substring(1,filePath.length());
+            return filePath;
         }
         else {
             realFilePath = filePath;

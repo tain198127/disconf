@@ -166,13 +166,13 @@ public class DisInnerConfigHelper {
         // 本地相关
         //
 
-        if (StringUtils.isEmpty(DisClientSysConfig.getInstance().LOCAL_DOWNLOAD_DIR)) {
+        if (StringUtils.isEmpty(OsUtil.getRealConfigDir(DisClientSysConfig.getInstance().LOCAL_DOWNLOAD_DIR))) {
             throw new Exception("settings: LOCAL_TMP_DIR cannot find");
         }
 
         // LOCAL_DOWNLOAD_DIR
-        LOGGER.debug("SERVER disconf.local_download_dir: " + DisClientSysConfig.getInstance().LOCAL_DOWNLOAD_DIR);
-        OsUtil.makeDirs(DisClientSysConfig.getInstance().LOCAL_DOWNLOAD_DIR);
+        LOGGER.debug("SERVER disconf.local_download_dir: " + OsUtil.getRealConfigDir(DisClientSysConfig.getInstance().LOCAL_DOWNLOAD_DIR));
+        OsUtil.makeDirs(OsUtil.getRealConfigDir(DisClientSysConfig.getInstance().LOCAL_DOWNLOAD_DIR));
     }
 
 }
